@@ -3,7 +3,7 @@
 # Codes for T-cell tracking analysis in MatLab. 
 initData: Makes a matrix from an excel file of the T cell movement data, specify which columns to include. 
     -Make sure your excel sheet is in your MATLAB folder (by default, this is where MatLab access all of your code/resources)
-    e.g. data = TCT_InitData('sampledata.xlsx', 5)
+    e.g. data = initData('sampledata.xlsx', 5)
     
     -First column must ALWAYS be the track number, and all track numbers MUST be grouped together. Make sure your excel sheet 
     e.g. This is OK
