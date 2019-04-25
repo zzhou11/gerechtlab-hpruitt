@@ -29,6 +29,6 @@ TCT_InitData: Makes a matrix from an excel file of the T cell movement data, spe
     10
 TCT_getTrack: Makes a matrix of the slices and corresponding data of a particular track. Returns an empty matrix if no track found.
     
-    -Slice numbers MUST be unique, and preferably in ascending order to make calculations easier for you...
+    -Slice numbers MUST be unique, and preferably in ascending order to make calculations easier for you
     
             
