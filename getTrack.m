@@ -1,7 +1,7 @@
 function [outputTrack] = getTrack(data, trackNumber)
-%   GETTRACK Given a data matrix, returns the track as a matrix,
+%   GETTRACK Given a data matrix, returns the specified track as a matrix,
 %   the first column indicates the slices. Returns an empty matrix if no
-%   track is found
+%   track of the target track number is found
 
 
 outputTrack = [];
