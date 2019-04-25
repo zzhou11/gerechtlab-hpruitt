@@ -1,4 +1,4 @@
-# gerechtlab-hpruitt-codes
+# gerechtlab-hpruitt
 
 # Codes for T-cell tracking analysis in MatLab. 
 initData: Makes a matrix from an excel file of the T cell movement data, specify which columns to include. 
