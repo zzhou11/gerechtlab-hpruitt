@@ -1,10 +1,10 @@
 function [outputData] = getConfinementRatios(data)
-%   GETCONFINEMENTRATIOS
-%   Slices must be in ascending order, only analyzes tracks number 1 at up
-%   (i.e., if track 0 or < 0 exists, it will not be analyzed). It also must
-%   be contained in column 1
+%   GETCONFINEMENTRATIOS Returns the displacement / distance ratio of each track, returns a Nx2 matrix, first column 
+%   indicates the track, second column indicates the ratios
+%   Data must follow the same format as initData. The slices from each track must be in ascending order. It also must
+%   be contained in column 2 of data. 
 %   X value must be in column 3, Y value must be in column 4 of the data
-%   if distance traveled = 0 (t cell did not move), output = -1
+%   if distance traveled = 0 (t cell did not move), ratio = -1
 %   ConfinementRatio must be between 1 and 0 (inclusive)
 
 %   Initialize useful variables
