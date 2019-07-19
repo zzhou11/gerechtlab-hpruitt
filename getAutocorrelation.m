@@ -34,7 +34,9 @@ if size(track, 1) >= 3
         %   value is -1, the cell travels in opposite directions over 3 slices.
         %   First sum this value, then divide by number of slices to obtain
         %   autocorrelation for this track
-        cosSum = cosSum + dot(vec1, vec2) / (mag1 * mag2);
+        if mag1 ~= 0 && mag2 ~= 0
+            cosSum = cosSum + dot(vec1, vec2) / (mag1 * mag2);
+        end
     end
     
     autocorrelation = cosSum / size(track, 1);
