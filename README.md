@@ -17,9 +17,7 @@ cd means change directory
 
 This will navigate to your Desktop
 
-2. Next, do 
-
-> git clone <remote-repo-url>
+2. Next, do > git clone <remote-repo-url>
   
   Get the <remote-repo-url> by going to this GitHub repo and click clone, you should see a http url pop up for you to copy
   
