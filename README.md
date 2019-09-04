@@ -1,6 +1,6 @@
 ### gerechtlab-hpruitt
 
-### SETTING UP GIT ON YOUR MAC AND HOW IT WORKS ###
+### SETTING UP GIT ON YOUR MAC AND HOW IT WORKS 
 
 Git basically allows for version control (track changes) on a project for multiple users. On Mac, this is done through the Terminal. 
 
