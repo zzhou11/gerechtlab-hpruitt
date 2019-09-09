@@ -1,7 +1,7 @@
 
 title = getTitle();
-//In order to set bounds for threshold, we need to convert images to a HSB stack
-//This conversion can only be done from RBG type images, first convert to RGB if it's not already.
+//In order to set bounds for threshold, we need to convert images to a RGB stack
+//This conversion can only be done from RGB type images, first convert to RGB if it's not already.
 
 cellCount = 0;
 
