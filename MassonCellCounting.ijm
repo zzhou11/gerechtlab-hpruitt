@@ -12,31 +12,44 @@ if (bitDepth != 24) {
 	title = getTitle();
 }
 
+//	Measures the average color of the pictures
+run("Measure");
+avgColor = getResult("Mean", nResults - 1);
+IJ.deleteRows(nResults - 1, nResults)
+
 min=newArray(3);
 max=newArray(3);
 
 //Splits RGB into a 3 image stack
-run("HSB Stack");
+run("RGB Stack");
 run("Convert Stack to Images");
 
 
 //Renaming the 3 components to fit with min/max arrays 
-selectWindow("Hue");
+selectWindow("Red");
 rename("0");
-selectWindow("Saturation");
+selectWindow("Green");
 rename("1");
-selectWindow("Brightness");
+selectWindow("Blue");
 rename("2");
 
-//Selecting Hue thresholds
-min[0]=0; 
-max[0]=255;
-//Selecting Saturation thresholds
-min[1]=125;
-max[1]=255;
-//Selecting Brightness thresholds
-min[2]=57;
-max[2]=255;
+
+
+// Set thresholding. threshGap value is the "gap" between average and desired. All final values must at least be between max threshold and min threshold
+threshGap = 60;
+minThresh = 20;
+maxThresh = 100;
+for (i = 0; i < 3; i++) {
+	min[i]=0; 
+	threshold = avgColor - threshGap;
+	if (threshold <= maxThresh && threshold >= minThresh) {
+		max[i]= threshold;
+		} else if (threshold < minThresh){
+			max[i] = minThresh;
+		} else {
+			max[i] = maxThresh;
+		}
+}
 
 //Sets all the thresholds and converting all images to masks
 for (i=0;i<3;i++){
@@ -54,23 +67,25 @@ for (i=0;i<3;i++){
   selectWindow(""+i);
   close();
 }
+
 selectWindow("Result of 0");
 close();
 selectWindow("Result of Result of 0");
 //Rename the resulting thresholded image
 rename(title);
+
 //Make black and white and creates the selection
 run("Make Binary");
 run("Create Selection");
 
 //Runs the Nucleus Counter plugin
-run("Nucleus Counter", "smallest=200 largest=5000 threshold=Current smooth=None show");
+run("Nucleus Counter", "smallest=800 largest=5000 threshold=Current smooth=None show");
 //Renames Summary for temporary access as "Results"
 IJ.renameResults("Summary", "Results");
 //If this is the first iteration, rename the useless "Slice" column to "Title", otherwise, delete the accumlating "Slice" column data
 if(nResults == 1) {
 Table.renameColumn("Slice", "Title");
-} else {
+} else {	
 	Table.deleteColumn("Slice");
 }
 //Sets the title 
@@ -80,7 +95,7 @@ IJ.renameResults("Results", "Summary");
 Table.deleteColumn("Mean");
 //Closes all the unnecessary window
 selectWindow(title);
-close();
+//close();
 if(isOpen("Exception")){
 	selectWindow("Exception");
 	run("Close");
