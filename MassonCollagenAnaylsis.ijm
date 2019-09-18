@@ -94,7 +94,7 @@ max[0]=255;
 min[1]=0;
 max[1]=255;
 //Selecting Brightness thresholds
-min[2]=180;
+min[2]=200;
 max[2]=255;
 
 //Sets all the thresholds and converting all images to masks
@@ -116,9 +116,6 @@ for (i=0;i<3;i++){
 selectWindow("Result of 0");
 close();
 selectWindow("Result of Result of 0");
-
-//Filters by size and fills in holes
-run("Analyze Particles...", "size=0-Infinity show=Masks include in_situ");
 
 //Rename the resulting thresholded image
 rename("Collagen Normalization");
